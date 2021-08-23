@@ -1,0 +1,105 @@
+@font-face {
+    font-family: exodus;
+    src: url('/fonts/ExodusDemo-Striped.otf');
+  }
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    margin:0;
+    /* background-image: url('/images/vecteezy_Lavender-Lilac-Background-2_ir1020__generated.jpg');  */
+    background-image: url('/images/vector-NOV-2020-32_generated.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.game-board {
+    background-image: url('/images/vecteezy-abstract-geometric-green-background_WS0321_generated.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+    height: 85vmin;
+    width: 85vmin;
+    display:grid;
+    grid-template-rows: repeat(21, 1fr);
+    grid-template-columns: repeat(21, 1fr);
+}
+
+.snake {
+    background-color: hsl(184, 100%, 50%);
+    border: .25vmin;
+}
+
+.food {
+    background-image: url('/images/—Pngtree—red\ apple\ vector_5866014.png');
+    background-size: cover;
+    border: .25vmin; 
+}
+
+.score-board {
+    display: flex;
+    width: 15em;
+    height: 8.5em;
+    /* background-image: url('/images/background-vecteezy.png'); */
+    background-image: url('/images/T039_generated.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: exodus;
+    font-size: 3em;
+    color: rgb(236, 253, 4);
+    /* border: 1px solid pink; */
+    border-radius: 10px;
+    box-shadow: 0 0 70px 70px rgb(29, 29, 29) inset;
+}
+
+.start-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 29vmin;
+    width: 87vmin;
+    background-image: url('/images/vecteezybanner-backgroundYK0221_generated.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    opacity: 1;
+    border: 2px solid rgb(0, 248, 33);
+    border-radius: 15px;
+}
+
+.start-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/images/vecteezybanner-backgroundYK0221_generated.jpg');
+    background-size: cover;
+    width: 50vmin;
+    height: 25vmin;
+    border: 10px solid rgb(252, 63, 6);
+}
+
+h1 {
+    display: flex;
+    color: rgb(255, 43, 6);
+    font-size: 12vmin;
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-family: exodus;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 2vmin;
+    width: 55vmin;
+    opacity: 1;
+    border: 1px solid rgb(255, 0, 0);
+}
