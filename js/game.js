@@ -30,6 +30,18 @@ function startGame() {
     }, 200)
 }
 
+function reframeSnake() {
+    const snkaePieces = display.FRONT_END.gameboard_div.querySelectorAll('snake')
+    for(let i = 0; i < snkaePieces.length; i++) {
+        snkaePieces[i].remove()
+    }
+}
+
+function gameLoop() {
+    update()
+    draw()
+}
+
 function gameOver() {
     if(snake.outsideGrid() || snake.hitSelf()) {
         clearInterval(gameInPlayId)

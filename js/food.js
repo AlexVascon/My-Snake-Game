@@ -53,7 +53,9 @@ class Food {
             this.eaten++
             theSnake.addSegment(1)
             this.moveInRelationTo(theSnake)
+            return true
         }
+        return false
     }
 
 }

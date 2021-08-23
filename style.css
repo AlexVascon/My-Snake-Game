@@ -40,38 +40,15 @@ body {
     border: .25vmin;
 }
 
-.snake-head {
-    background-color: hsl(184, 100%, 50%);
-    border: .25vmin;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
 .food {
     background-image: url('/images/—Pngtree—red\ apple\ vector_5866014.png');
     background-size: cover;
     border: .25vmin; 
+    transition: transform 3s ease-in-out;
 }
 
-.food-dance-left {
-    background-image: url('/images/—Pngtree—red\ apple\ vector_5866014.png');
-    background-size: cover;
-    border: .25vmin; 
-    transform: rotate(-50deg);
-}
-
-.food-dance-right {
-    background-image: url('/images/—Pngtree—red\ apple\ vector_5866014.png');
-    background-size: cover;
-    border: .25vmin; 
-    transform: rotate(50deg);
-}
-
-.food-dance-center {
-    background-image: url('/images/—Pngtree—red\ apple\ vector_5866014.png');
-    background-size: cover;
-    border: .25vmin; 
-    transform: rotate(-1deg);
+#game-board:hover .food{
+    transform: rotate(0.5turn);
 }
 
 .score-board {
@@ -140,7 +117,8 @@ h1 {
 h2 {
     font-family: robo;
     color: rgb(250, 246, 3);
-    /* text-shadow: 0 0 0.05em rgb(224, 247, 228), 0 0 .5em #fafe05, 0 0 0.2em #fafe05; */
+    /* text-shadow: 0 0 0.4em rgb(84, 18, 238), 0 0 .5em #fafe05, 0 0 0.2em #fafe05; */
+    text-shadow: 0 0 0.4em white, 0 0 .5em #fe0505, 0 0 0.05em #fe0505;
     margin: .1em 0 0 0;
     border-bottom: 1px solid rgb(251, 255, 0);
 }
