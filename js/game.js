@@ -8,7 +8,6 @@ let gameInPlayId
 startMenu()
 startGame()
 
-
 function update() {
     snake.update()
     food.update()
@@ -17,9 +16,9 @@ function update() {
 function draw() {
     // remove current food and snake frames which are then replaced 
     // by their updated position. Simulating movement.
-    display.frontEnd.gameboard_div.innerHTML = ''
-    snake.draw(display.frontEnd.gameboard_div)
-    food.draw(display.frontEnd.gameboard_div)
+    display.FRONT_END.gameboard_div.innerHTML = ''
+    snake.draw(display.FRONT_END.gameboard_div)
+    food.draw(display.FRONT_END.gameboard_div)
 }
 
 function startGame() {
@@ -32,9 +31,9 @@ function startGame() {
 }
 
 function gameOver() {
-    if(snake.outsideGrid()) {
+    if(snake.outsideGrid() || snake.hitSelf()) {
         clearInterval(gameInPlayId)
-        snake.deadSnakeAnimation(display.frontEnd.gameboard_div)
+        snake.deadSnakeAnimation(display.FRONT_END.gameboard_div)
         setTimeout(function () {
             scoreBoardScreen()
         }, snake.body.length * 200)

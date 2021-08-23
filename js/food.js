@@ -55,6 +55,7 @@ class Food {
             this.moveInRelationTo(theSnake)
         }
     }
+
 }
 
 // export food item. It follows the singleton pattern so,

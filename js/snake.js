@@ -1,16 +1,14 @@
-const thudAudio = new Audio('/sounds/carDoor1.mp3')
-let inputDirection = { x:0, y:0 }
-let currentdirection = { up:0,down:0,left:0,right:0, unchanged:0 }
-const move = { up:-1,down:1,left:-1,right:1, unchanged:0 }
-const SNAKE_HEAD = 0
-
 
  class Snake {
     constructor() {
         this.body = [
             {x:10,y:11},
-        ]
-        
+        ],
+        this.changeDirection = { x:0, y:0 },
+        this.lastDirection = { moving: ''},
+        this.SNAKE_HEAD = 0,
+        this.move = { up:-1,down:1,left:-1,right:1, unchanged:0 },
+        this.thudAudio = new Audio('/sounds/carDoor1.mp3')
     }
 
     draw(gameBoard) {
@@ -27,24 +25,24 @@ const SNAKE_HEAD = 0
         window.addEventListener('keydown', e => {
             switch(e.key) {
                 case 'ArrowUp':
-                    if(currentdirection.down !== 0) break
-                    inputDirection = { x: move.up, y: move.unchanged }
-                    currentdirection = this.recordDirection('UP')
+                    if(this.lastDirection.moving === 'DOWN') break
+                    this.changeDirection = { x: this.move.up, y: this.move.unchanged }
+                    this.lastDirection.moving = 'UP'
                     break
                 case 'ArrowDown':
-                    if(currentdirection.up !== 0) break
-                    inputDirection = { x: move.down, y: move.unchanged }
-                    currentdirection = this.recordDirection('DOWN')
+                    if(this.lastDirection.moving === 'UP') break
+                    this.changeDirection = { x: this.move.down, y: this.move.unchanged }
+                    this.lastDirection.moving = 'DOWN'
                     break
                 case 'ArrowLeft':
-                    if(currentdirection.right !== 0) break
-                    inputDirection = { x: move.unchanged, y: move.left }
-                    currentdirection = this.recordDirection('LEFT')
+                    if(this.lastDirection.moving === 'RIGHT') break
+                    this.changeDirection = { x: this.move.unchanged, y: this.move.left }
+                    this.lastDirection.moving = 'LEFT'
                     break
                 case 'ArrowRight':
-                    if(currentdirection.left !== 0) break
-                    inputDirection = { x: move.unchanged, y: move.right }
-                    currentdirection = this.recordDirection('RIGHT')
+                    if(this.lastDirection.moving === 'LEFT') break
+                    this.changeDirection = { x: this.move.unchanged, y: this.move.right }
+                    this.lastDirection.moving = 'RIGHT'
                     break
 
             }
@@ -55,16 +53,9 @@ const SNAKE_HEAD = 0
         }
 
         // use += to update position on x & y axis. 
-        // example: (x = 14) is the same as (x = row 14). 14 + 1 movies row up. 14 - 1 moves row down
-        this.body[SNAKE_HEAD].x += inputDirection.x
-        this.body[SNAKE_HEAD].y += inputDirection.y
-    }
-
-    recordDirection(direction) {
-        if(direction === 'UP') return {up:1,down:0,left:0,right:0, unchanged:0}
-        if(direction === 'DOWN') return {up:0,down:1,left:0,right:0, unchanged:0}
-        if(direction === 'LEFT') return {up:0,down:0,left:1,right:0, unchanged:0}
-        if(direction === 'RIGHT') return {up:0,down:0,left:0,right:1, unchanged:0}
+        // example: (x = 14) is the same as (x = row 14). 14 + 1 movies row up. 14 - 1 this.moves row down
+        this.body[this.SNAKE_HEAD].x += this.changeDirection.x
+        this.body[this.SNAKE_HEAD].y += this.changeDirection.y
     }
 
     addSegment(amount) {
@@ -75,15 +66,24 @@ const SNAKE_HEAD = 0
     }
 
     outsideGrid() {
-        if(this.body[SNAKE_HEAD].x < 1 || this.body[SNAKE_HEAD].x > 21 || this.body[SNAKE_HEAD].y < 1 || this.body[SNAKE_HEAD].y > 21) {
-            thudAudio.play()
+        if(this.body[this.SNAKE_HEAD].x < 1 || this.body[this.SNAKE_HEAD].x > 21 || this.body[this.SNAKE_HEAD].y < 1 || this.body[this.SNAKE_HEAD].y > 21) {
+            this.thudAudio.play()
             return true
         }
         return false
     }
 
+    hitSelf() {
+        for(let i = 2; i < this.body.length; i++) {
+            if(this.body[i].x === this.body[this.SNAKE_HEAD].x && this.body[i].y === this.body[this.SNAKE_HEAD].y){
+                this.thudAudio.play()
+                return true
+            } 
+        } return false
+    }
+
     deadSnakeAnimation(gameBoard) {
-        const SNAKE_BODY = gameBoard.querySelectorAll('.snake')
+        const SNAKE_BODY = gameBoard.getElementsByClassName('snake')
             for(let i = 0; i < SNAKE_BODY.length; i++) {
                 setTimeout(function () {
                     SNAKE_BODY[i].style.backgroundColor = "red"

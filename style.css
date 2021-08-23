@@ -2,6 +2,10 @@
     font-family: exodus;
     src: url('/fonts/ExodusDemo-Striped.otf');
   }
+@font-face {
+    font-family: robo;
+    src: url('/fonts/EsbaItalic-qzYq.ttf');
+}
 
 body {
     height: 100vh;
@@ -36,31 +40,55 @@ body {
     border: .25vmin;
 }
 
+.snake-head {
+    background-color: hsl(184, 100%, 50%);
+    border: .25vmin;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
 .food {
     background-image: url('/images/—Pngtree—red\ apple\ vector_5866014.png');
     background-size: cover;
     border: .25vmin; 
 }
 
+.food-dance-left {
+    background-image: url('/images/—Pngtree—red\ apple\ vector_5866014.png');
+    background-size: cover;
+    border: .25vmin; 
+    transform: rotate(-50deg);
+}
+
+.food-dance-right {
+    background-image: url('/images/—Pngtree—red\ apple\ vector_5866014.png');
+    background-size: cover;
+    border: .25vmin; 
+    transform: rotate(50deg);
+}
+
+.food-dance-center {
+    background-image: url('/images/—Pngtree—red\ apple\ vector_5866014.png');
+    background-size: cover;
+    border: .25vmin; 
+    transform: rotate(-1deg);
+}
+
 .score-board {
     display: flex;
-    width: 15em;
-    height: 8.5em;
-    /* background-image: url('/images/background-vecteezy.png'); */
+    width: 30em;
+    height: 15em;
     background-image: url('/images/T039_generated.jpg');
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position-y: center;
-    background-position-x: center;
+    background-position: center center;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-family: exodus;
     font-size: 3em;
-    color: rgb(236, 253, 4);
-    /* border: 1px solid pink; */
     border-radius: 10px;
-    box-shadow: 0 0 70px 70px rgb(29, 29, 29) inset;
+    box-shadow: -130px 0px 15px 50px rgb(20, 9, 51) inset;
+    padding: 1em;
 }
 
 .start-screen {
@@ -93,7 +121,6 @@ h1 {
     display: flex;
     color: rgb(255, 43, 6);
     font-size: 12vmin;
-    /* font-family: 'Courier New', Courier, monospace; */
     font-family: exodus;
     text-align: center;
     align-items: center;
@@ -103,3 +130,19 @@ h1 {
     opacity: 1;
     border: 1px solid rgb(255, 0, 0);
 }
+
+h2 {
+    font-family: robo;
+    color: rgb(250, 246, 3);
+    /* text-shadow: 0 0 0.05em rgb(224, 247, 228), 0 0 .5em #fafe05, 0 0 0.2em #fafe05; */
+    margin: .1em 0 0 0;
+    border-bottom: 1px solid rgb(251, 255, 0);
+}
+
+span {
+    font-family: exodus;
+    font-style: oblique;
+    color: rgb(255, 255, 255);
+    font-size: .6em;
+}
+
