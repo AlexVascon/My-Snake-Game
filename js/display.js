@@ -8,7 +8,7 @@ class Display {
         this.FRONT_END = { 
             background: document.body,
             start_div: document.getElementById('start-screen'),
-            gameboard_div: document.getElementById('game-board'),
+            gameboard_div: document.getElementById('board'),
             scoreboard_div: document.getElementById('final-score')
         },
         this.BACKGROUNDS = {
@@ -31,8 +31,8 @@ class Display {
         this.FRONT_END.start_div.addEventListener('click', () => {
         this.FRONT_END.start_div.classList.remove('start-screen')
         this.FRONT_END.start_div.remove()
-        this.gameBoardScreen()
-        gameAudio.play()
+        this.canvasScreen()
+        // gameAudio.play()
         })
     }
 
@@ -43,7 +43,19 @@ class Display {
 
     gameBoardScreen() {
         this.FRONT_END.background.style.backgroundImage = this.BACKGROUNDS.purple
-        this.FRONT_END.gameboard_div.classList.add('game-board')
+        this.FRONT_END.gameboard_div.classList.add('board')
+    }
+
+    canvasScreen() {
+        this.FRONT_END.background.style.backgroundImage = this.BACKGROUNDS.purple
+        this.FRONT_END.gameboard_div.style.display = "initial"
+        this.FRONT_END.gameboard_div.classList.add('board')
+    }
+
+    makeCanvasScreen() {
+        this.startGameScreen()
+        this.startGameEvent()
+        return this.FRONT_END.gameboard_div
     }
 
     scoreBoardScreen(){
@@ -60,7 +72,8 @@ class Display {
     }
     
     makeScoreBoardScreen() {
-        this.FRONT_END.gameboard_div.classList.remove('game-board')
+        this.FRONT_END.gameboard_div.classList.remove('board')
+        this.FRONT_END.gameboard_div.style.display = "none"
         this.scoreBoardScreen()
         gameAudio.pause()
     }

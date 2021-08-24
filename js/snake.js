@@ -18,6 +18,13 @@ class Snake {
     });
   }
 
+  drawTwo() {
+    const canvas = document.getElementById('board')
+    const ctx = canvas.getContext('2d')
+    ctx.fillStyle = "blue";
+    ctx.fillRect(30,30,50,50)
+  }
+
   update() {
     window.addEventListener("keydown", (e) => {
       switch (e.key) {

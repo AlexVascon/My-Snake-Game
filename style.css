@@ -22,6 +22,17 @@ body {
     background-position: center center;
 }
 
+.board {
+    background-image: url('/images/vecteezy-abstract-geometric-green-background_WS0321_generated.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+    height: 85vmin;
+    width: 85vmin;
+    margin: 0;
+}
+
 .game-board {
     background-image: url('/images/vecteezy-abstract-geometric-green-background_WS0321_generated.jpg');
     background-size: cover;
@@ -64,7 +75,7 @@ body {
     text-align: center;
     font-size: 3em;
     border-radius: 10px;
-    box-shadow: -130px 0px 15px 50px rgb(20, 9, 51) inset;
+    box-shadow: -10px 0px 15px 50px rgb(20, 9, 51) inset;
     padding: 1em;
 }
 
@@ -85,7 +96,8 @@ body {
 
 .start-screen:hover {
     text-shadow: 0 0 0.4em white, 0 0 .5em #fe0505, 0 0 0.2em #fe0505;
-    box-shadow: 0 0 1.5em rgb(1, 255, 1);
+    box-shadow: 0 0 3em rgb(1, 255, 1);
+    border: 1px solid white;
     cursor: pointer;
 }
 
