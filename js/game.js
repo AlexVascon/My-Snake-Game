@@ -6,40 +6,38 @@ import canvasFood from "./canvasFood.js";
 const score = { points: 0 };
 let gameInPlayId;
 const thudAudio = new Audio('/sounds/carDoor1.mp3')
-
-
-
+let snakeSpeed = 1
+// CANVAS SET-UP
 const canvas = document.getElementById('board')
 const ctx = canvas.getContext('2d')
 let x = (canvas.width / 2) + 50
 let y = (canvas.height / 2) + 50
 let scale = Math.floor(canvas.width / 21)
-
 canvasSnake.setPosition(x,y)
 canvasSnake.setSize(scale,scale)
 canvasFood.setSize(scale,scale)
+let restartGameAgain = false
 
+//GAME START
 startMenu()
 setUp()
 
-
-
 function setUp() {
   gameInPlayId = setInterval(() => {
-    if(!gameOverTwo()) {
+    if(!gameOver()) {
       ctx.clearRect(0,0, canvas.width, canvas.height)
       canvasSnake.update(canvas)
       canvasFood.update(ctx)
       canvasSnake.draw(ctx)
       canvasFood.draw(ctx)
     } 
-    
   }, 250)
 }
 
-function gameOverTwo() {
+function gameOver() {
   if(canvasSnake.hitSelf() || canvasSnake.outsideGrid()) {
     thudAudio.play()
+    localScore()
     clearInterval(gameInPlayId)
     canvasSnake.deadAnimation(ctx)
     setTimeout(function () {
@@ -49,70 +47,56 @@ function gameOverTwo() {
   } return false
 }
 
-// BEGIN GAME
-// showCanvas()
-// startMenu();
-// startGame();
-
-function update() {
-  snake.update();
-  food.update();
-}
-
-function draw() {
-  // remove current food and snake frames which are then replaced
-  // by their updated position. Simulating movement.
-  // display.FRONT_END.gameboard_div.innerHTML = "";
-  snake.drawTwo()
-  snake.draw(display.FRONT_END.gameboard_div);
-  food.draw(display.FRONT_END.gameboard_div);
-}
-
-function startGame() {
-  gameInPlayId = setInterval(function () {
-    if (!gameOver()) {
-      update();
-      draw();
-    }
-  }, 200);
-}
-
-function showCanvas() {
-  display.canvasBoard()
-}
-
-function reframeSnake() {
-    const snkaePieces = display.FRONT_END.gameboard_div.querySelectorAll('snake')
-    for(let i = 0; i < snkaePieces.length; i++) {
-        snkaePieces[i].remove()
-    }
-}
-
-function gameLoop() {
-    update()
-    draw()
-}
-
-function gameOver() {
-  if (snake.outsideGrid() || snake.hitSelf()) {
-    clearInterval(gameInPlayId);
-    snake.deadSnakeAnimation(display.FRONT_END.gameboard_div);
-    setTimeout(function () {
-      scoreBoardScreen();
-    }, snake.body.length * 200);
-    return true;
-  }
-  return false;
-}
+// function draw() {
+//   snake.drawTwo()
+//   snake.draw(display.FRONT_END.gameboard_div);
+//   food.draw(display.FRONT_END.gameboard_div);
+// }
 
 function startMenu() {
-  // display.makeStartScreen();
   display.makeCanvasScreen()
 }
 
 function scoreBoardScreen() {
   display.makeScoreBoardScreen();
 }
+
+function localScore() {
+  if(Number(localStorage.getItem('three') > score.points)) return
+
+  let scoreAsString = '' + score.points
+  if(Number(localStorage.getItem('three') < score.points && Number(localStorage.getItem('two')) > score.points)) {
+    localStorage.setItem('three', scoreAsString)
+    return
+  }
+  if(Number(localStorage.getItem('two') < score.points && Number(localStorage.getItem('one')) > score.points)) {
+    localStorage.setItem('three', localStorage.getItem('two'))
+    localStorage.setItem('two', scoreAsString)
+    return
+  }
+  if(Number(localStorage.getItem('one')) < score.points) {
+    localStorage.setItem('three', localStorage.getItem('two'))
+    localStorage.setItem('two', localStorage.getItem('one'))
+    localStorage.setItem('one', scoreAsString)
+    return
+  }
+  
+}
+
+function restartSetUp() {
+  switch(restartGame) {
+  
+    case true:
+      setUp()
+  }
+}
+
+function restartGame() {
+  if(display.restartBtnPressed()) {
+    setUp()
+  }
+}
+
 
 export default score
 

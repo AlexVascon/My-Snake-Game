@@ -14,7 +14,8 @@ class CanvasFood {
         this.chompAudio = new Audio('/sounds/aud_chomp.mp3'),
         this.angle = 0,
         this.counter = 25,
-        this.timer = 0;
+        this.timer = 0,
+        this.eatenBySnake = 0;
 
     }
 
@@ -24,6 +25,7 @@ class CanvasFood {
             score.points += 5000
             canvasSnake.grow(1)
             this.move()
+            this.eatenBySnake++
         }
     }
 
