@@ -18,14 +18,8 @@ class CanvasSnake {
         ctx.fillRect(this.head.x, this.head.y,this.size.width,this.size.height )
     }
 
-    update() {
-        for(let i = 0; i < this.body.length; i++){
-            this.body[i] = this.body[i+1]
-        }
-        if(this.body.length !== 0) {
-            this.body[this.body.length-1] = { x: this.head.x, y: this.head.y}
-        }
-        
+    update(frameNumber) {
+        // main file addEventListener("keydown", snake.move)
         window.addEventListener("keydown", (e) => {
           switch (e.key) {
             case "ArrowUp":
@@ -50,9 +44,16 @@ class CanvasSnake {
               break;
           }
         });
-
-        this.head.x += this.changeDirection.y
-        this.head.y += this.changeDirection.x
+        
+        if(frameNumber % 10 === 0){
+          for(let i = 0; i < this.body.length; i++){
+              this.body[i] = this.body[i+1]
+          }
+          if(this.body.length !== 0) {
+              this.body[this.body.length-1] = { x: this.head.x, y: this.head.y}
+          }}
+          this.head.x += frameNumber % 10 === 0 ? this.changeDirection.y : 0
+          this.head.y += frameNumber % 10 === 0? this.changeDirection.x : 0
     }
 
     outsideGrid() {
@@ -115,5 +116,5 @@ class CanvasSnake {
 
 }
 
-const canvasSnake = new CanvasSnake()
-export default canvasSnake
+
+export default CanvasSnake

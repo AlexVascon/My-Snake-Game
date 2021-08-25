@@ -112,38 +112,15 @@ body {
     -webkit-text-stroke-color: rgb(255, 255, 255); 
 } */
 
-.rotate {
-    animation: rotation 2s;
-  }
-
-@keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
-  }
-
-.start-banner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/images/vecteezybanner-backgroundYK0221_generated.jpg');
-    background-size: cover;
-    width: 50vmin;
-    height: 25vmin;
-    border: 10px solid rgb(252, 63, 6);
-}
-
-#start-screen div:hover {
+/* #start-screen div:hover {
     /* box-shadow: 0 0 0.2em rgb(2, 235, 41), 0 0 2em #03e734, 0 0 .8em #02e23a; */
     /* border: 1px solid white; */
-    cursor: pointer;
-}
+    /* cursor: pointer; 
+} */
 
 #start-screen div h1:hover {
     color: rgb(6, 252, 6);
+    cursor: pointer;
 }
 
 #start-screen div {
@@ -154,9 +131,6 @@ body {
     font-size: 2.3em;
     color: red;
     font-family: robo;
-    /* text-decoration: none;
-    text-shadow: none;
-    border: none; */
     border-bottom: 1px solid red;
 }
 
@@ -189,7 +163,6 @@ h1 {
 #final-score h2 {
     font-family: robo;
     color: rgb(250, 246, 3);
-    /* text-shadow: 0 0 0.4em rgb(84, 18, 238), 0 0 .5em #fafe05, 0 0 0.2em #fafe05; */
     text-shadow: 0 0 0.4em white, 0 0 .5em #fe0505, 0 0 0.05em #fe0505;
     margin: .1em 0 0 0;
     border-bottom: 1px solid rgb(251, 255, 0);
@@ -203,6 +176,14 @@ span {
 }
 
 .restart-btn {
+    margin: 1.2em 0;
+    font-size: .4em;
     font-family: exodus;
+    color: white;
+}
+
+.restart-btn:hover {
+    color: red;
+    cursor: pointer;
 }
 

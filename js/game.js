@@ -1,10 +1,10 @@
 import display from "./display.js";
-import food from "./food.js";
-import snake from "./snake.js";
-import canvasSnake from "./canvasSnake.js";
-import canvasFood from "./canvasFood.js";
+import CanvasSnake from "./canvasSnake.js";
+let canvasSnake = new CanvasSnake();
+import CanvasFood from "./canvasFood.js";
+let canvasFood = new CanvasFood();
+
 const score = { points: 0 };
-let gameInPlayId;
 const thudAudio = new Audio('/sounds/carDoor1.mp3')
 let snakeSpeed = 1
 // CANVAS SET-UP
@@ -17,28 +17,37 @@ canvasSnake.setPosition(x,y)
 canvasSnake.setSize(scale,scale)
 canvasFood.setSize(scale,scale)
 let restartGameAgain = false
+let gameInPlayId = null // you stop the game by invoking cancelAnimationFrame(gameInPlayId) on this id
 
-//GAME START
-startMenu()
-setUp()
+function gameReset(){
+  gameInPlayId = null
+  snakeSpeed = 1
+ canvasSnake = new CanvasSnake();
+ x = (canvas.width / 2) + 50
+ y = (canvas.height / 2) + 50
+ scale = Math.floor(canvas.width / 21)
+ canvasSnake.setPosition(x,y)
+ canvasSnake.setSize(scale,scale)
+ canvasFood.setSize(scale,scale)
+}
 
-function setUp() {
-  gameInPlayId = setInterval(() => {
+function gameLoop() {
     if(!gameOver()) {
       ctx.clearRect(0,0, canvas.width, canvas.height)
-      canvasSnake.update(canvas)
-      canvasFood.update(ctx)
+      canvasSnake.update(gameInPlayId)
+      score.points += canvasFood.update(canvasSnake)
+      canvasFood.draw(ctx, gameInPlayId)
       canvasSnake.draw(ctx)
-      canvasFood.draw(ctx)
-    } 
-  }, 250)
+      gameInPlayId = requestAnimationFrame(gameLoop) // this generates a running number from 1 to infinity
+    }else{
+      cancelAnimationFrame(gameInPlayId)
+    }
 }
 
 function gameOver() {
   if(canvasSnake.hitSelf() || canvasSnake.outsideGrid()) {
     thudAudio.play()
     localScore()
-    clearInterval(gameInPlayId)
     canvasSnake.deadAnimation(ctx)
     setTimeout(function () {
       scoreBoardScreen();
@@ -47,18 +56,12 @@ function gameOver() {
   } return false
 }
 
-// function draw() {
-//   snake.drawTwo()
-//   snake.draw(display.FRONT_END.gameboard_div);
-//   food.draw(display.FRONT_END.gameboard_div);
-// }
-
 function startMenu() {
-  display.makeCanvasScreen()
+  display.displayMainMenuScreen()
 }
 
 function scoreBoardScreen() {
-  display.makeScoreBoardScreen();
+  display.displayScoreBoardScreen(gameReset, gameLoop);
 }
 
 function localScore() {
@@ -83,20 +86,10 @@ function localScore() {
   
 }
 
-function restartSetUp() {
-  switch(restartGame) {
-  
-    case true:
-      setUp()
-  }
-}
 
-function restartGame() {
-  if(display.restartBtnPressed()) {
-    setUp()
-  }
-}
-
+//GAME START
+startMenu()
+gameLoop()
 
 export default score
 

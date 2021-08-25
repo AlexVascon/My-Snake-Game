@@ -20,7 +20,7 @@ class Display {
 
     }
     
-    startGameScreen() {
+    createMainMenuVisuals() {
         this.FRONT_END.background.style.backgroundImage = this.BACKGROUNDS.yellow
         this.FRONT_END.start_div.classList.add('start-screen')
         const startButtonDiv = document.createElement('div')
@@ -28,39 +28,29 @@ class Display {
         startText.innerText = "START"
         startButtonDiv.appendChild(startText)
         this.FRONT_END.start_div.appendChild(startButtonDiv)
-        this.displayHighScores()
+        this.createHighScoresVisuals()
     }
 
-    startGameEvent() {
+    clickStartBtnLoadGame() {
         this.FRONT_END.start_div.addEventListener('click', () => {
         this.FRONT_END.start_div.style.display = "none"
-        this.canvasScreen()
+        this.createGameBoardVisuals()
         gameAudio.play()
         })
     }
 
-    makeStartScreen() {
-        this.startGameScreen()
-        this.startGameEvent()
+   displayMainMenuScreen() {
+        this.createMainMenuVisuals()
+        this.clickStartBtnLoadGame()
     }
 
-    gameBoardScreen() {
-        this.FRONT_END.background.style.backgroundImage = this.BACKGROUNDS.purple
-        this.FRONT_END.gameboard_div.classList.add('board')
-    }
-
-    canvasScreen() {
+    createGameBoardVisuals() {
         this.FRONT_END.background.style.backgroundImage = this.BACKGROUNDS.purple
         this.FRONT_END.gameboard_div.style.display = "initial"
         this.FRONT_END.gameboard_div.classList.add('board')
     }
 
-    makeCanvasScreen() {
-        this.startGameScreen()
-        this.startGameEvent()
-    }
-
-    scoreBoardScreen(){
+    createScoreBoardVisuals(){
         this.FRONT_END.background.style.backgroundImage = this.BACKGROUNDS.black
         const textContainer = document.createElement('div')
         const scoreText = document.createElement('span')
@@ -73,15 +63,14 @@ class Display {
         this.FRONT_END.scoreboard_div.classList.add('score-board')
     }
     
-    makeScoreBoardScreen() {
-        // this.FRONT_END.gameboard_div.classList.remove('board')
+    displayScoreBoardScreen(gameReset, gameLoop) {
         this.FRONT_END.gameboard_div.style.display = "none"
-        this.scoreBoardScreen()
-        this.restartButton()
+        this.createScoreBoardVisuals()
+        this.restartButton(gameReset, gameLoop)
         gameAudio.pause()
     }
 
-    displayHighScores() {
+    createHighScoresVisuals() {
         const firstPlace = document.createElement('h2')
         const secondPlace = document.createElement('h3')
         const thirdPlace = document.createElement('h4')
@@ -93,7 +82,7 @@ class Display {
         this.FRONT_END.start_div.appendChild(thirdPlace)
     }
 
-    restartButton() {
+    restartButton(gameReset, gameLoop) {
         const restartBtn = document.createElement('div')
         restartBtn.innerText = "RESTART"
         restartBtn.classList.add('restart-btn')
@@ -101,15 +90,14 @@ class Display {
         restartBtn.addEventListener('click', () => {
             this.restartBtnHit = true;
             this.FRONT_END.scoreboard_div.style.display = "none"
-            this.FRONT_END.start_div.style.display = "initial"
+            this.FRONT_END.start_div.style.display = "flex"
             this.FRONT_END.start_div.classList.add('start-screen')
             this.FRONT_END.background.style.backgroundImage = this.BACKGROUNDS.yellow
+            gameReset()
+            gameLoop()
         }) 
     }
 
-    restartBtnPressed() {
-        return this.restartBtnHit
-    }
 }
 
 const display = new Display()
