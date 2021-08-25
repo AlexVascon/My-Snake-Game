@@ -10,6 +10,7 @@ class CanvasSnake {
     }
 
     draw(ctx) {
+        ctx.save()
         ctx.fillStyle = 'hsl(184, 100%, 50%)'
         for(let i = 0; i < this.body.length; i++) {
             ctx.fillRect(this.body[i].x, this.body[i].y, this.size.width,this.size.height )

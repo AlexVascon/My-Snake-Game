@@ -31,6 +31,7 @@ body {
     height: 85vmin;
     width: 85vmin;
     margin: 0;
+    z-index: 1;
 }
 
 .game-board {
@@ -75,7 +76,7 @@ body {
     text-align: center;
     font-size: 3em;
     border-radius: 10px;
-    box-shadow: -10px 0px 15px 50px rgb(20, 9, 51) inset;
+    box-shadow: -130px 0px 15px 50px rgb(20, 9, 51) inset;
     padding: 1em;
 }
 
@@ -95,11 +96,28 @@ body {
 }
 
 .start-screen:hover {
-    text-shadow: 0 0 0.4em white, 0 0 .5em #fe0505, 0 0 0.2em #fe0505;
-    box-shadow: 0 0 3em rgb(1, 255, 1);
+    /* text-shadow: 0 0 1em rgb(255, 0, 0), 0 0 .8em #fe0505, 0 0 .5em #fe0505; */
+    box-shadow: 0 0 0.2em rgb(2, 235, 41), 0 0 2em #03e734, 0 0 .8em #02e23a;
+    /* box-shadow: 0 0 5em rgb(1, 255, 1); */
     border: 1px solid white;
     cursor: pointer;
+    
+    /* -webkit-text-stroke-width: .01px;
+    -webkit-text-stroke-color: rgb(255, 255, 255); */
 }
+
+.rotate {
+    animation: rotation 2s;
+  }
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
 
 .start-banner {
     display: flex;

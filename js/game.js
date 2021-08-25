@@ -8,6 +8,7 @@ let gameInPlayId;
 const thudAudio = new Audio('/sounds/carDoor1.mp3')
 
 
+
 const canvas = document.getElementById('board')
 const ctx = canvas.getContext('2d')
 let x = (canvas.width / 2) + 50
@@ -28,7 +29,7 @@ function setUp() {
     if(!gameOverTwo()) {
       ctx.clearRect(0,0, canvas.width, canvas.height)
       canvasSnake.update(canvas)
-      canvasFood.update()
+      canvasFood.update(ctx)
       canvasSnake.draw(ctx)
       canvasFood.draw(ctx)
     } 

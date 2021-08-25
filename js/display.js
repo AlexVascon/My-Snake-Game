@@ -32,7 +32,7 @@ class Display {
         this.FRONT_END.start_div.classList.remove('start-screen')
         this.FRONT_END.start_div.remove()
         this.canvasScreen()
-        // gameAudio.play()
+        gameAudio.play()
         })
     }
 
