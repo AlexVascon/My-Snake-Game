@@ -137,7 +137,7 @@ class CanvasSnake {
             (function(i, context) {
                 setTimeout(function() {
                     ctx.fillRect(context.body[i].x, context.body[i].y, 100,100 )
-                }, 2000 / (parseInt(context.body.length / 4) +1))
+                }, 2000 / context.body.length)
             })(i, this)
         }
     }
