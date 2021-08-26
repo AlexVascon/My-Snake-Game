@@ -1,10 +1,10 @@
 @font-face {
     font-family: exodus;
-    src: url('/fonts/ExodusDemo-Striped.otf');
+    src: url('fonts/ExodusDemo-Striped.otf');
   }
 @font-face {
     font-family: robo;
-    src: url('/fonts/EsbaItalic-qzYq.ttf');
+    src: url('fonts/EsbaItalic-qzYq.ttf');
 }
 
 body {
@@ -14,14 +14,14 @@ body {
     justify-content: center;
     align-items: center;
     margin:0;
-    background-image: url('/images/vector-NOV-2020-32_generated.jpg');
+    background-image: url('images/vector-NOV-2020-32_generated.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 .board {
-    background-image: url('/images/vecteezy-abstract-geometric-green-background_WS0321_generated.jpg');
+    background-image: url('images/vecteezy-abstract-geometric-green-background_WS0321_generated.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;
@@ -36,7 +36,7 @@ body {
     display: flex;
     width: 30em;
     height: 15em;
-    background-image: url('/images/T039_generated.jpg');
+    background-image: url('images/T039_generated.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
