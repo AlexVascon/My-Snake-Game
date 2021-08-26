@@ -6,7 +6,8 @@ class CanvasSnake {
         this.size = { width: 0, height: 0 },
         this.changeDirection = { x: 0, y: 0 },
         this.lastDirection = { moving: "" },
-        this.move = { up: -100, down: 100, left: -100, right: 100, unchanged: 0 };
+        this.move = { up: -100, down: 100, left: -100, right: 100, unchanged: 0 },
+        this.increase = 0;
     }
 
     draw(ctx) {
@@ -45,12 +46,19 @@ class CanvasSnake {
           }
         });
 
-        let frameRate = 10
+        let frameRate = 8
 
-        if(this.move.down === 100) {
-          frameRate = 8
+        if(this.increase === 1) {
+          frameRate = 6
         }
-        
+
+        if(this.increase === 2) {
+          frameRate = 5
+        }
+        if(this.increase === 3) {
+          frameRate = 4
+        }
+
         if(frameNumber % frameRate === 0){
           for(let i = 0; i < this.body.length; i++){
               this.body[i] = this.body[i+1]
@@ -58,8 +66,10 @@ class CanvasSnake {
           if(this.body.length !== 0) {
               this.body[this.body.length-1] = { x: this.head.x, y: this.head.y}
           }}
+
           this.head.x += frameNumber % frameRate === 0 ? this.changeDirection.y : 0
           this.head.y += frameNumber % frameRate === 0 ? this.changeDirection.x : 0
+        
     }
 
     outsideGrid() {
@@ -111,10 +121,13 @@ class CanvasSnake {
 
     checkToIncreaseSpeed(applesEaten) {
       if(applesEaten === 5) {
-        this.move.up += -100
-        this.move.down += 100
-        this.move.left += -100
-        this.move.right += 100
+        this.increase = 1
+      }
+      if(applesEaten === 10) {
+        this.increase = 2
+      }
+      if(applesEaten === 15) {
+        this.increase = 3
       }
     }
 

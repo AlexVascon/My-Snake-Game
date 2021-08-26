@@ -1,6 +1,8 @@
 import score from './game.js'
 const gameAudio = new Audio('./sounds/samovar-party.mp3')
 gameAudio.loop = true
+const hissAudio = new Audio('/sounds/snakehiss2.mp3')
+hissAudio.loop = false
 
 
 class Display {
@@ -32,8 +34,8 @@ class Display {
     }
 
     clickStartBtnLoadGame() {
-        this.FRONT_END.start_div.addEventListener('click', () => {
-        this.FRONT_END.start_div.style.display = "none"
+        this.FRONT_END.start_div.getElementsByTagName('h1')[0].addEventListener('click', () => {
+            this.FRONT_END.start_div.style.display = "none"
         this.createGameBoardVisuals()
         gameAudio.play()
         })

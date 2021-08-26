@@ -25,21 +25,37 @@ class CanvasFood {
     }
 
     draw(ctx) {
-        if(this.timer > 500) {
+        if(this.timer > 660) {
+            this.angle = 0
             this.timer = 0
         }
         ctx.imageSmoothingEnabled = false
-        if(this.timer <= 300) {
+        if(this.timer < 240) {
             this.rotation(ctx, this.incrementAngle())
         }
-        if(this.timer > 300 && this.timer < 400) {
+        if(this.timer >= 240 && this.timer < 360) {
             this.jump(ctx)
         }
-        if(this.timer >= 400 && this.timer <= 500) {
-            if(this.timer % 20 === 0) {
+        if(this.timer >=360 && this.timer <= 460) {
+            if(this.timer <= 380 || (this.timer > 400 && this.timer <= 420)) {
                 this.shake(ctx,25)
             } else {
                 this.shake(ctx,-25)
+            }
+        }
+        if(this.timer >460 && this.timer <= 560) {
+            if(this.timer < 480 || (this.timer > 500 && this.timer < 520)) {
+                ctx.drawImage(this.image, (this.body.x - 20), (this.body.y +50), this.size.width + (this.size.width / 2) - 10, (this.size.height / 2))
+            } else {
+                ctx.drawImage(this.image, this.body.x -5 , (this.body.y -30), this.size.width + (this.size.width / 2) - 40, this.size.height + (this.size.height / 2) - 40)
+            }
+            
+        }
+        if(this.timer > 560 && this.timer <= 660) {
+            if(this.timer <= 580 || (this.timer > 600 && this.timer <= 620)) {
+                this.shake(ctx,45)
+            } else {
+                this.shake(ctx,-45)
             }
         }
 
@@ -48,19 +64,20 @@ class CanvasFood {
     }
 
     incrementAngle() {
-        this.angle+=this.counter;
-    
-        if(this.timer <= 100) {
-            this.counter = 1
-            if(this.angle >= 45) {
-                this.angle = 0;  
+        if(this.timer <= 120) {
+            if(this.timer < 20 || (this.timer > 40 && this.timer <= 60 ) || (this.timer > 80 && this.timer <= 100)) {
+                this.angle = 0
+            } else {
+                this.angle = 45
             }
         } else {
-            this.counter = -1
-           if(this.angle <= -45) {
-                this.angle = 0;
+            if((this.timer > 120  && this.timer < 140) || (this.timer > 160 && this.timer < 180) || (this.timer > 200 && this.timer < 220)) {
+                this.angle = 0
+            } else {
+                this.angle = -45
             }
         }
+        
     }
 
     rotation(ctx, deg) {
@@ -87,7 +104,7 @@ class CanvasFood {
     jump(ctx) {
         ctx.save()
         ctx.translate(this.body.x + this.size.width / 2, this.body.y + this.size.height / 2);
-        if(this.timer % 20 === 0) {
+        if(this.timer <=255 || (this.timer >270 && this.timer <= 285) || (this.timer > 305 && this.timer <= 320) || this.timer > 335) {
         ctx.drawImage(this.image,this.size.width / 2 * (-1),(this.size.height / 2 * (-1)),this.size.width + 2,this.size.height);
         } else {
         ctx.drawImage(this.image,this.size.width / 2 * (-1),(this.size.height / 2 * (-1)) - 20,this.size.width + 2,this.size.height);
@@ -102,6 +119,10 @@ class CanvasFood {
         ctx.rotate(radi);
         ctx.drawImage(this.image,this.size.width / 2 * (-1),this.size.height / 2 * (-1),this.size.width,this.size.height);
         ctx.restore()
+    }
+
+    squeeze() {
+        ctx.drawImage(this.image, this.body.x , (this.body.y +80), this.size.width, (this.size.height / 2))
     }
 
     setSize(width, height) {
