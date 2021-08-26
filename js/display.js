@@ -1,7 +1,7 @@
 import score from './game.js'
-const gameAudio = new Audio('./sounds/samovar-party.mp3')
+const gameAudio = new Audio('sounds/samovar-party.mp3')
 gameAudio.loop = true
-const hissAudio = new Audio('/sounds/snakehiss2.mp3')
+const hissAudio = new Audio('sounds/snakehiss2.mp3')
 hissAudio.loop = false
 
 
@@ -14,9 +14,9 @@ class Display {
             scoreboard_div: document.getElementById('final-score')
         },
         this.BACKGROUNDS = {
-            yellow: `url("/images/vector-NOV-2020-32_generated.jpg")`,
-            purple: `url("/images/vecteezy_Lavender-Lilac-Background-2_ir1020__generated.jpg")`,
-            black: `url("/images/Vecteezy_Black_Background_AP0920_Vecteezy_Black_Background_AP0920-01.jpg")`
+            yellow: `url("images/vector-NOV-2020-32_generated.jpg")`,
+            purple: `url("images/vecteezy_Lavender-Lilac-Background-2_ir1020__generated.jpg")`,
+            black: `url("images/Vecteezy_Black_Background_AP0920_Vecteezy_Black_Background_AP0920-01.jpg")`
         },
         this.restartBtnHit = false;
 
