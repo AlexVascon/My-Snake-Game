@@ -32,32 +32,6 @@ body {
     z-index: 1;
 }
 
-/* .game-board {
-    background-image: url('/images/vecteezy-abstract-geometric-green-background_WS0321_generated.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-y: center;
-    background-position-x: center;
-    height: 85vmin;
-    width: 85vmin;
-    display:grid;
-    grid-template-rows: repeat(21, 1fr);
-    grid-template-columns: repeat(21, 1fr);
-} */
-
-/* .snake {
-    background-color: hsl(184, 100%, 50%);
-    border: .25vmin;
-}
-
-.food {
-    background-image: url('/images/—Pngtree—red\ apple\ vector_5866014.png');
-    background-size: cover;
-    border: .25vmin; 
-    transition: transform 3s ease-in-out;
-} */
-
-
 .score-board {
     display: flex;
     width: 30em;
@@ -84,38 +58,6 @@ body {
     width: 70vmin;
     height: 70vmin;
 }
-
-/* .start-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 29vmin;
-    width: 87vmin;
-    background-image: url('/images/vecteezybanner-backgroundYK0221_generated.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-y: center;
-    opacity: 1;
-    border: 2px solid rgb(0, 248, 33);
-    border-radius: 15px;
-} */
-
-/* .start-screen:hover {
-    /* text-shadow: 0 0 1em rgb(255, 0, 0), 0 0 .8em #fe0505, 0 0 .5em #fe0505; */
-    /* box-shadow: 0 0 0.2em rgb(2, 235, 41), 0 0 2em #03e734, 0 0 .8em #02e23a; */
-    /* box-shadow: 0 0 5em rgb(1, 255, 1); */
-    /* border: 1px solid white;
-    cursor: pointer; */
-    
-    /* -webkit-text-stroke-width: .01px;
-    -webkit-text-stroke-color: rgb(255, 255, 255); 
-} */
-
-/* #start-screen div:hover {
-    /* box-shadow: 0 0 0.2em rgb(2, 235, 41), 0 0 2em #03e734, 0 0 .8em #02e23a; */
-    /* border: 1px solid white; */
-    /* cursor: pointer; 
-} */
 
 #start-screen div h1:hover {
     color: rgb(6, 252, 6);
