@@ -84,7 +84,6 @@ function localScore() {
     localStorage.setItem('three', localStorage.getItem('two'))
     localStorage.setItem('two', localStorage.getItem('one'))
     localStorage.setItem('one', scoreAsString)
-    display.FRONT_END.scoreboard_div.getElementsByTagName('span')[0].innerText = "New HighScore: "
     return
   }
   
