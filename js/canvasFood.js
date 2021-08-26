@@ -9,7 +9,7 @@ class CanvasFood {
         this.angle = 0,
         this.counter = 25,
         this.timer = 0,
-        this.eatenBySnakeHeadBySnake = 0;
+        this.amountFoodEaten = 0;
     }
 
     update(canvasSnake) {
@@ -17,7 +17,8 @@ class CanvasFood {
             this.chompAudio.play()
             canvasSnake.grow(1)
             this.respawn()
-            this.eatenBySnakeHeadBySnake++
+            this.amountFoodEaten++
+            canvasSnake.checkToIncreaseSpeed(this.amountFoodEaten)
             return 5000
         }
         return 0
@@ -137,6 +138,12 @@ class CanvasFood {
         return  {
             x: Math.floor(Math.random() * 21) * 100,
             y: Math.floor(Math.random() * 21) * 100
+        }
+    }
+
+    checkNotSpawnedOnSnake(snake) {
+        while(this.checkAllSnakeSegments(snake)) {
+            this.respawn()
         }
     }
 

@@ -51,6 +51,7 @@ class Display {
     }
 
     createScoreBoardVisuals(){
+        this.FRONT_END.scoreboard_div.innerHTML = ''
         this.FRONT_END.background.style.backgroundImage = this.BACKGROUNDS.black
         const textContainer = document.createElement('div')
         const scoreText = document.createElement('span')
@@ -65,6 +66,7 @@ class Display {
     
     displayScoreBoardScreen(gameReset, gameLoop) {
         this.FRONT_END.gameboard_div.style.display = "none"
+        this.FRONT_END.scoreboard_div.style.display = "flex"
         this.createScoreBoardVisuals()
         this.restartButton(gameReset, gameLoop)
         gameAudio.pause()

@@ -44,29 +44,35 @@ class CanvasSnake {
               break;
           }
         });
+
+        let frameRate = 10
+
+        if(this.move.down === 100) {
+          frameRate = 8
+        }
         
-        if(frameNumber % 10 === 0){
+        if(frameNumber % frameRate === 0){
           for(let i = 0; i < this.body.length; i++){
               this.body[i] = this.body[i+1]
           }
           if(this.body.length !== 0) {
               this.body[this.body.length-1] = { x: this.head.x, y: this.head.y}
           }}
-          this.head.x += frameNumber % 10 === 0 ? this.changeDirection.y : 0
-          this.head.y += frameNumber % 10 === 0? this.changeDirection.x : 0
+          this.head.x += frameNumber % frameRate === 0 ? this.changeDirection.y : 0
+          this.head.y += frameNumber % frameRate === 0 ? this.changeDirection.x : 0
     }
 
     outsideGrid() {
         let isOutside = false;
         switch (this.lastDirection.moving) {
           case "DOWN":
-            isOutside = this.head.y === 2100;
+            isOutside = this.head.y >= 2100;
             break;
           case "UP":
             isOutside = this.head.y < 0;
             break;
           case "RIGHT":
-            isOutside = this.head.x === 2100;
+            isOutside = this.head.x >= 2100;
             break;
           case "LEFT":
             isOutside = this.head.x < 0;
@@ -101,6 +107,15 @@ class CanvasSnake {
         for(let i = 0; i < amount; i++) {
             this.body.push({ ...this.body[this.body.length - 1] });
         }
+    }
+
+    checkToIncreaseSpeed(applesEaten) {
+      if(applesEaten === 5) {
+        this.move.up += -100
+        this.move.down += 100
+        this.move.left += -100
+        this.move.right += 100
+      }
     }
 
     deadAnimation(ctx) {

@@ -20,9 +20,11 @@ let restartGameAgain = false
 let gameInPlayId = null // you stop the game by invoking cancelAnimationFrame(gameInPlayId) on this id
 
 function gameReset(){
+  score.points = 0
   gameInPlayId = null
   snakeSpeed = 1
  canvasSnake = new CanvasSnake();
+ canvasFood = new CanvasFood();
  x = (canvas.width / 2) + 50
  y = (canvas.height / 2) + 50
  scale = Math.floor(canvas.width / 21)
@@ -61,6 +63,7 @@ function startMenu() {
 }
 
 function scoreBoardScreen() {
+  console.log('here')
   display.displayScoreBoardScreen(gameReset, gameLoop);
 }
 
