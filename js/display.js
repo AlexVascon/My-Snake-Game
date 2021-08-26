@@ -1,5 +1,5 @@
 import score from './game.js'
-const gameAudio = new Audio('/sounds/samovar-party.mp3')
+const gameAudio = new Audio('./sounds/samovar-party.mp3')
 gameAudio.loop = true
 
 

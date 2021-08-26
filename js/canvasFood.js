@@ -2,10 +2,10 @@
 class CanvasFood {
     constructor() {
         this.image = new Image()
-        this.image.src = "/images/—Pngtree—red apple vector_5866014.png";
+        this.image.src = "./images/—Pngtree—red apple vector_5866014.png";
         this.body = { x: 0, y: 0},
         this.size = { width: 0, height: 0 },
-        this.chompAudio = new Audio('/sounds/aud_chomp.mp3'),
+        this.chompAudio = new Audio('./sounds/aud_chomp.mp3'),
         this.angle = 0,
         this.counter = 25,
         this.timer = 0,

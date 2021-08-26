@@ -5,7 +5,7 @@ import CanvasFood from "./canvasFood.js";
 let canvasFood = new CanvasFood();
 
 const score = { points: 0 };
-const thudAudio = new Audio('/sounds/carDoor1.mp3')
+const thudAudio = new Audio('./sounds/carDoor1.mp3')
 let snakeSpeed = 1
 // CANVAS SET-UP
 const canvas = document.getElementById('board')
