@@ -48,7 +48,7 @@ function gameLoop() {
 }
 
 function gameOver() {
-  if(canvasSnake.hitSelf() || canvasSnake.outsideGrid()) {
+  if(canvasSnake.outsideGrid() || canvasSnake.hitSelf()) {
     thudAudio.play()
     localScore()
     canvasSnake.deadAnimation(ctx)
