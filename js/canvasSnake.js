@@ -7,7 +7,8 @@ class CanvasSnake {
         this.changeDirection = { x: 0, y: 0 },
         this.lastDirection = { moving: "" },
         this.move = { up: -100, down: 100, left: -100, right: 100, unchanged: 0 },
-        this.increase = 0;
+        this.increase = 0,
+        this.frameRate;
     }
 
     draw(ctx) {
@@ -46,20 +47,18 @@ class CanvasSnake {
           }
         });
 
-        let frameRate = 8
-
+        this.frameRate = 8
         if(this.increase === 1) {
-          frameRate = 6
+          this.frameRate = 6
         }
-
         if(this.increase === 2) {
-          frameRate = 5
+          this.frameRate = 5
         }
         if(this.increase === 3) {
-          frameRate = 4
+          this.frameRate = 4
         }
 
-        if(frameNumber % frameRate === 0){
+        if(frameNumber % this.frameRate === 0){
           for(let i = 0; i < this.body.length; i++){
               this.body[i] = this.body[i+1]
           }
@@ -67,8 +66,8 @@ class CanvasSnake {
               this.body[this.body.length-1] = { x: this.head.x, y: this.head.y}
           }}
 
-          this.head.x += frameNumber % frameRate === 0 ? this.changeDirection.y : 0
-          this.head.y += frameNumber % frameRate === 0 ? this.changeDirection.x : 0
+          this.head.x += frameNumber % this.frameRate === 0 ? this.changeDirection.y : 0
+          this.head.y += frameNumber % this.frameRate === 0 ? this.changeDirection.x : 0
         
     }
 

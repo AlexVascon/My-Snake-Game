@@ -23,8 +23,8 @@ function gameReset(){
   score.points = 0
   gameInPlayId = null
   snakeSpeed = 1
- canvasSnake = new CanvasSnake();
- canvasFood = new CanvasFood();
+ canvasSnake = new CanvasSnake(); // assign new snake on load
+ canvasFood = new CanvasFood(); // assign new food on load
  x = (canvas.width / 2) + 50
  y = (canvas.height / 2) + 50
  scale = Math.floor(canvas.width / 21)
@@ -53,7 +53,7 @@ function gameOver() {
     canvasSnake.deadAnimation(ctx)
     setTimeout(function () {
       scoreBoardScreen();
-    }, canvasSnake.body.length * 200);
+    }, canvasSnake.body.length * 100);
     return true
   } return false
 }
@@ -68,7 +68,7 @@ function scoreBoardScreen() {
 }
 
 function localScore() {
-  if(Number(localStorage.getItem('three') > score.points)) return
+  if(Number(localStorage.getItem('three')) > score.points) return
 
   let scoreAsString = '' + score.points
   if(Number(localStorage.getItem('three') < score.points && Number(localStorage.getItem('two')) > score.points)) {
@@ -86,9 +86,7 @@ function localScore() {
     localStorage.setItem('one', scoreAsString)
     return
   }
-  
 }
-
 
 //GAME START
 startMenu()
