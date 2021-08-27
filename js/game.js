@@ -20,6 +20,7 @@ let restartGameAgain = false
 let gameInPlayId = null // you stop the game by invoking cancelAnimationFrame(gameInPlayId) on this id
 
 function gameReset(){
+  location.reload()
   score.points = 0
   gameInPlayId = null
   snakeSpeed = 1
@@ -68,7 +69,7 @@ function scoreBoardScreen() {
 }
 
 function localScore() {
-  if(Number(localStorage.getItem('three')) > score.points) return
+  // if(Number(localStorage.getItem('three')) > score.points) return
 
   let scoreAsString = '' + score.points
   if(Number(localStorage.getItem('three') < score.points && Number(localStorage.getItem('two')) > score.points)) {
